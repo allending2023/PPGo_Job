@@ -153,7 +153,9 @@ package_binary() {
         for ARCH in "${INPUT_ARCH[@]}";do
         package_file ${BINARY_NAME}-${OS}-${ARCH}
         if [[ "${OS}" = "windows" ]];then
-            zip -rq ../${PACKAGE_DIR}/${BINARY_NAME}-${VERSION}-${OS}-${ARCH}.zip ${BINARY_NAME}-${OS}-${ARCH}
+            # windows下使用 gitbash, 也支持tar
+            # zip -rq ../${PACKAGE_DIR}/${BINARY_NAME}-${VERSION}-${OS}-${ARCH}.zip ${BINARY_NAME}-${OS}-${ARCH}
+            tar czf ../${PACKAGE_DIR}/${BINARY_NAME}-${VERSION}-${OS}-${ARCH}.tar.gz ${BINARY_NAME}-${OS}-${ARCH}
         else
             tar czf ../${PACKAGE_DIR}/${BINARY_NAME}-${VERSION}-${OS}-${ARCH}.tar.gz ${BINARY_NAME}-${OS}-${ARCH}
         fi
@@ -207,7 +209,7 @@ run() {
 package_ppgo_job() {
     BINARY_NAME='PPGo_Job'
     MAIN_FILE="./main.go"
-    INCLUDE_FILE=("conf" "static" "views" "ppgo_job2.sql")
+    INCLUDE_FILE=("conf" "static" "views" "db-ppgo_job2-mysql.sql", "db-ppgo_job2-pgsql.sql")
     INCLUDE_LINUX_FILE=("run.sh")
     INCLUDE_DARWIN_FILE=("run.sh")
     INCLUDE_WINDOWS_FILE=("run.bat")

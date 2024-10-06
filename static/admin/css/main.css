@@ -52,8 +52,13 @@
 }
 
 
+.layui-nav .layui-nav-item .menu-group-text{
+    font-weight: 600;
+}
 
-
+.layui-nav .layui-nav-item .pp-nav-childs {
+    padding-left: 20px;
+}
 
 .layui-layout-admin .layui-footer{
 	line-height: 35px;
