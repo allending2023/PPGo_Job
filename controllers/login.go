@@ -13,9 +13,10 @@ import (
 
 	"strings"
 
+	"PPGo_Job/libs"
+	"PPGo_Job/models"
+
 	"github.com/astaxie/beego"
-	"github.com/george518/PPGo_Job/libs"
-	"github.com/george518/PPGo_Job/models"
 )
 
 type LoginController struct {
@@ -29,7 +30,7 @@ func (self *LoginController) Login() {
 	self.TplName = "login/login.html"
 }
 
-//登录 TODO:XSRF过滤
+// 登录 TODO:XSRF过滤
 func (self *LoginController) LoginIn() {
 
 	//self.ajaxMsg("登录成功", MSG_OK)
@@ -60,7 +61,7 @@ func (self *LoginController) LoginIn() {
 	self.ajaxMsg("请求方式错误", MSG_ERR)
 }
 
-//登出
+// 登出
 func (self *LoginController) LoginOut() {
 	self.Ctx.SetCookie("auth", "")
 	self.redirect(beego.URLFor("LoginController.Login"))

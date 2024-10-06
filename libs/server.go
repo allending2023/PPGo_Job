@@ -9,11 +9,6 @@ package libs
 
 import (
 	"fmt"
-	"github.com/george518/PPGo_Job/common"
-	"github.com/george518/PPGo_Job/models"
-	"github.com/linxiaozhi/go-telnet"
-	"github.com/pkg/errors"
-	"golang.org/x/crypto/ssh"
 	"io/ioutil"
 	"net"
 	"net/rpc"
@@ -21,6 +16,13 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"PPGo_Job/common"
+	"PPGo_Job/models"
+
+	gote "github.com/linxiaozhi/go-telnet"
+	"github.com/pkg/errors"
+	"golang.org/x/crypto/ssh"
 )
 
 func RemoteCommandByTelnetPassword(servers *models.TaskServer) error {

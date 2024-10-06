@@ -10,18 +10,20 @@ package server
 import (
 	"bytes"
 	"fmt"
-	"github.com/astaxie/beego/logs"
-	. "github.com/george518/PPGo_Job/jobs"
-	"github.com/george518/PPGo_Job/libs"
-	"github.com/george518/PPGo_Job/models"
 	"os/exec"
 	"runtime"
 	"runtime/debug"
 	"sync"
 	"time"
+
+	. "PPGo_Job/jobs"
+	"PPGo_Job/libs"
+	"PPGo_Job/models"
+
+	"github.com/astaxie/beego/logs"
 )
 
-//执行句柄map
+// 执行句柄map
 var CmdMap sync.Map
 
 func SetCmdMap(key string, cmd *exec.Cmd) {

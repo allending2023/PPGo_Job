@@ -10,11 +10,12 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/george518/PPGo_Job/libs"
 	"strconv"
+
+	"PPGo_Job/libs"
 )
 
-//启动时注册
+// 启动时注册
 func Register() error {
 	//获取本机ip以及端口 todo ip合法性判断
 	if C.TcpIp == "auto" {
@@ -65,7 +66,7 @@ func Register() error {
 	return fmt.Errorf("自动注册失败")
 }
 
-//程序异常退出的通知
+// 程序异常退出的通知
 func Close() error {
 
 	param := make(map[string]string, 0)
@@ -98,7 +99,7 @@ func Close() error {
 	return fmt.Errorf("执行器退出通知异常：未知原因")
 }
 
-//心跳机制
+// 心跳机制
 func Heartbeat() error {
 	return nil
 }

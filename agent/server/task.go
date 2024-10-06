@@ -8,9 +8,10 @@
 package server
 
 import (
+	"PPGo_Job/jobs"
+	"PPGo_Job/models"
+
 	"github.com/astaxie/beego/logs"
-	"github.com/george518/PPGo_Job/jobs"
-	"github.com/george518/PPGo_Job/models"
 )
 
 type RpcTask struct {
@@ -21,7 +22,7 @@ type RpcResult struct {
 	Message string
 }
 
-//Execute once
+// Execute once
 func (r *RpcTask) RunTask(task *models.Task, Result *jobs.JobResult) error {
 	server_id := C.ServerId
 	job, err := RestJobFromTask(task, server_id)
@@ -32,7 +33,7 @@ func (r *RpcTask) RunTask(task *models.Task, Result *jobs.JobResult) error {
 	return nil
 }
 
-//Kill execution
+// Kill execution
 func (r *RpcTask) KillCommand(task models.Task, reply *RpcResult) error {
 	reply.Status = 200
 	reply.Message = "Ok kill " + task.TaskName

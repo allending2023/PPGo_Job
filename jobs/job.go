@@ -11,9 +11,6 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/astaxie/beego/logs"
-	"github.com/george518/PPGo_Job/libs"
-	"github.com/george518/PPGo_Job/models"
 	"io/ioutil"
 	"net"
 	"net/rpc"
@@ -23,14 +20,21 @@ import (
 	"sync"
 	"time"
 
+	"PPGo_Job/libs"
+	"PPGo_Job/models"
+
+	"github.com/astaxie/beego/logs"
+
 	"runtime"
 	"strconv"
 	"strings"
 
 	"encoding/json"
+
+	"PPGo_Job/notify"
+
 	"github.com/astaxie/beego"
-	"github.com/george518/PPGo_Job/notify"
-	"github.com/linxiaozhi/go-telnet"
+	gote "github.com/linxiaozhi/go-telnet"
 	"golang.org/x/crypto/ssh"
 )
 
@@ -55,7 +59,7 @@ type JobResult struct {
 	IsTimeout bool
 }
 
-//调度计数器
+// 调度计数器
 var Counter sync.Map
 
 func GetCounter(key string) int {
@@ -207,7 +211,7 @@ func NewCommandJob(id int, serverId int, name string, command string) *Job {
 	return job
 }
 
-//远程执行任务 密钥验证
+// 远程执行任务 密钥验证
 func RemoteCommandJob(id int, serverId int, name string, command string, servers *models.TaskServer) *Job {
 	job := &Job{
 		Id:       id,
@@ -799,7 +803,7 @@ func (j *Job) Run() {
 	j.Task.Update("PrevTime", "ExecuteTimes")
 }
 
-//冗余代码
+// 冗余代码
 type adminInfo struct {
 	Id       int
 	Email    string

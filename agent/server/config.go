@@ -8,7 +8,8 @@
 package server
 
 import (
-	"github.com/george518/PPGo_Job/agent/common"
+	"PPGo_Job/agent/common"
+
 	"github.com/go-ini/ini"
 )
 

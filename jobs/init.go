@@ -9,10 +9,12 @@ package jobs
 
 import (
 	"fmt"
-	"github.com/astaxie/beego"
-	"github.com/george518/PPGo_Job/models"
 	"os/exec"
 	"time"
+
+	"PPGo_Job/models"
+
+	"github.com/astaxie/beego"
 )
 
 func InitJobs() {

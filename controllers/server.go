@@ -8,12 +8,14 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego/logs"
-	"github.com/george518/PPGo_Job/libs"
-	"github.com/george518/PPGo_Job/models"
 	"strconv"
 	"strings"
 	"time"
+
+	"PPGo_Job/libs"
+	"PPGo_Job/models"
+
+	"github.com/astaxie/beego/logs"
 )
 
 type ServerController struct {
@@ -348,8 +350,8 @@ func (self *ServerController) Table() {
 	self.ajaxList("成功", MSG_OK, count, list)
 }
 
-//以下函数为执行器接口
-//注册
+// 以下函数为执行器接口
+// 注册
 func (self *ServerController) ApiSave() {
 	//唯一确定值 ip+port
 	serverIp := strings.TrimSpace(self.GetString("server_ip"))
@@ -401,7 +403,7 @@ func (self *ServerController) ApiSave() {
 
 }
 
-//检测0-正常，1-异常，2-删除
+// 检测0-正常，1-异常，2-删除
 func (self *ServerController) ApiStatus() {
 	//唯一确定值 ip+port
 	serverId := strings.TrimSpace(self.GetString("server_ip"))
@@ -435,7 +437,7 @@ func (self *ServerController) ApiStatus() {
 	self.ajaxMsg(id, MSG_OK)
 }
 
-//获取 不检测执行器状态
+// 获取 不检测执行器状态
 func (self *ServerController) ApiGet() {
 	//唯一确定值 ip+port
 	serverId := strings.TrimSpace(self.GetString("server_ip"))

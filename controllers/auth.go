@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/george518/PPGo_Job/models"
+	"PPGo_Job/models"
 )
 
 type AuthController struct {
@@ -32,7 +32,7 @@ func (self *AuthController) List() {
 	self.display()
 }
 
-//获取全部节点
+// 获取全部节点
 func (self *AuthController) GetNodes() {
 	filters := make([]interface{}, 0)
 	filters = append(filters, "status", 1)
@@ -50,7 +50,7 @@ func (self *AuthController) GetNodes() {
 	self.ajaxList("成功", MSG_OK, count, list)
 }
 
-//获取一个节点
+// 获取一个节点
 func (self *AuthController) GetNode() {
 	id, _ := self.GetInt("id")
 	result, _ := models.AuthGetById(id)
@@ -71,7 +71,7 @@ func (self *AuthController) GetNode() {
 	self.ajaxList("成功", MSG_OK, 0, row)
 }
 
-//新增或修改
+// 新增或修改
 func (self *AuthController) AjaxSave() {
 	auth := new(models.Auth)
 	auth.UserId = self.userId
@@ -105,7 +105,7 @@ func (self *AuthController) AjaxSave() {
 	self.ajaxMsg("", MSG_OK)
 }
 
-//删除
+// 删除
 func (self *AuthController) AjaxDel() {
 	id, _ := self.GetInt("id")
 	auth, _ := models.AuthGetById(id)

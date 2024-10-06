@@ -8,11 +8,13 @@
 package notify
 
 import (
-	"github.com/astaxie/beego"
-	"github.com/george518/PPGo_Job/libs"
+	"encoding/json"
 	"log"
 	"time"
-	"encoding/json"
+
+	"PPGo_Job/libs"
+
+	"github.com/astaxie/beego"
 	"github.com/pkg/errors"
 )
 

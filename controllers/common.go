@@ -8,11 +8,13 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
-	"github.com/george518/PPGo_Job/libs"
-	"github.com/george518/PPGo_Job/models"
 	"strconv"
 	"strings"
+
+	"PPGo_Job/libs"
+	"PPGo_Job/models"
+
+	"github.com/astaxie/beego"
 )
 
 const (
@@ -34,7 +36,7 @@ type BaseController struct {
 	taskGroups     string
 }
 
-//前期准备
+// 前期准备
 func (self *BaseController) Prepare() {
 	self.pageSize = 20
 	controllerName, actionName := self.GetControllerAndAction()
@@ -57,7 +59,7 @@ func (self *BaseController) Prepare() {
 	self.Data["loginUserName"] = self.userName
 }
 
-//登录权限验证
+// 登录权限验证
 func (self *BaseController) Auth() {
 	arr := strings.Split(self.Ctx.GetCookie("auth"), "|")
 	self.userId = 0
@@ -190,7 +192,7 @@ func (self *BaseController) isPost() bool {
 	return self.Ctx.Request.Method == "POST"
 }
 
-//获取用户IP地址
+// 获取用户IP地址
 func (self *BaseController) getClientIp() string {
 	s := strings.Split(self.Ctx.Request.RemoteAddr, ":")
 	return s[0]
@@ -202,7 +204,7 @@ func (self *BaseController) redirect(url string) {
 	self.StopRun()
 }
 
-//加载模板
+// 加载模板
 func (self *BaseController) display(tpl ...string) {
 	var tplname string
 	if len(tpl) > 0 {
@@ -214,7 +216,7 @@ func (self *BaseController) display(tpl ...string) {
 	self.TplName = tplname
 }
 
-//ajax返回
+// ajax返回
 func (self *BaseController) ajaxMsg(msg interface{}, msgno int) {
 	out := make(map[string]interface{})
 	out["status"] = msgno
@@ -224,7 +226,7 @@ func (self *BaseController) ajaxMsg(msg interface{}, msgno int) {
 	self.StopRun()
 }
 
-//ajax返回 列表
+// ajax返回 列表
 func (self *BaseController) ajaxList(msg interface{}, msgno int, count int64, data interface{}) {
 	out := make(map[string]interface{})
 	out["code"] = msgno
@@ -236,7 +238,7 @@ func (self *BaseController) ajaxList(msg interface{}, msgno int, count int64, da
 	self.StopRun()
 }
 
-//资源分组信息
+// 资源分组信息
 func serverGroupLists(authStr string, adminId int) (sgl map[int]string) {
 	Filters := make([]interface{}, 0)
 	Filters = append(Filters, "status", 1)

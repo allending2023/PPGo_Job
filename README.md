@@ -13,10 +13,10 @@ PPGo_Job从v1.0开源以来，得到众多技术朋友的支持和欢迎，已�
 
 
 码云地址：https://gitee.com/georgehao/PPGo_Job
-Github地址:https://github.com/george518/PPGo_Job
+Github地址:https://github.com/allending2023/PPGo_Job
 
 文档地址：http://www.haodaquan.com/topics/1###
-Wiki:https://github.com/george518/PPGo_Job/wiki
+Wiki:https://github.com/allending2023/PPGo_Job/wiki
 
 
 二、架构 
@@ -31,7 +31,7 @@ Wiki:https://github.com/george518/PPGo_Job/wiki
 
 V2.x新增以下功能和特性：
 
-- 1、全新UI,基于LayUI构建全新页面，后端模板手工搭建，让操作更加人性化。后台模板地址：https://github.com/george518/PP_admin-template
+- 1、全新UI,基于LayUI构建全新页面，后端模板手工搭建，让操作更加人性化。后台模板地址：https://github.com/allending2023/PP_admin-template
 - 2、新增权限管理功能，根据菜单权限、操作权限和数据权限进行划分，方便多用户多权限管理定时任务。
 - 3、新增服务器复制功能，让服务器资源添加更加方便。
 - 4、新增定时任务详情页面，将任务相关操作更加集中起来操作。
@@ -54,7 +54,7 @@ V2.x新增以下功能和特性：
 
 2、请我喝瓶水
 
-![github](https://github.com/george518/PP_blog/blob/master/static/public/images/weixin.png?raw=true "github")
+![github](https://github.com/allending2023/PP_blog/blob/master/static/public/images/weixin.png?raw=true "github")
 
 四、先睹为快
 ----
@@ -72,7 +72,7 @@ V2.x新增以下功能和特性：
 
 方法一、 编译安装
 
-- go get github.com/george518/PPGo_Job
+- go get github.com/allending2023/PPGo_Job
 - 创建mysql数据库，并将ppgo_job2.sql导入
 - 修改config 配置数据库
 - 运行 go build
@@ -93,21 +93,21 @@ windows
 
 linux
 
-- 进入 https://github.com/george518/PPGo_Job/releases
+- 进入 https://github.com/allending2023/PPGo_Job/releases
 - 下载 ppgo_job-linux-2.x.0.zip 并解压
 - 进入文件夹，设置好数据库(创建数据库，导入ppgo_job2.sql)和配置文件(conf/app.conf)
 - 运行 ./run.sh start|stop
 
 mac
 
-- 进入https://github.com/george518/PPGo_Job/releases
+- 进入https://github.com/allending2023/PPGo_Job/releases
 - 下载 ppgo_job-mac-2.x.0.zip 并解压
 - 进入文件夹，设置好数据库(创建数据库，导入ppgo_job2.sql)和配置文件(conf/app.conf)
 - 运行 ./run.sh start|stop
 
 windows
 
-- 进入 https://github.com/george518/PPGo_Job/releases
+- 进入 https://github.com/allending2023/PPGo_Job/releases
 - 下载 ppgo_job-windows-2.x.0.zip 并解压
 - 进入文件夹，设置好数据库(创建数据库，导入ppgo_job2.sql)和配置文件(conf/app.conf)
 - 运行 run.bat

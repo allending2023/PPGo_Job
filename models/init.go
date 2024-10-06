@@ -8,17 +8,23 @@
 package models
 
 import (
-	"net/url"
+	"fmt"
+	"net/url" // 标准库中的fmt包来进行控制台输出
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
 
 var StartTime int64
 
 func Init(startTime int64) {
 	StartTime = startTime
+	dbType := beego.AppConfig.String("db.type")
+	if dbType == "" {
+		dbType = "mysql"
+	}
 	dbhost := beego.AppConfig.String("db.host")
 	dbport := beego.AppConfig.String("db.port")
 	dbuser := beego.AppConfig.String("db.user")
@@ -26,13 +32,30 @@ func Init(startTime int64) {
 	dbname := beego.AppConfig.String("db.name")
 	timezone := beego.AppConfig.String("db.timezone")
 	if dbport == "" {
-		dbport = "3306"
+		if dbType == "mysql" {
+			dbport = "3306"
+		} else if dbType == "postgres" {
+			dbport = "5432"
+		}
 	}
-	dsn := dbuser + ":" + dbpassword + "@tcp(" + dbhost + ":" + dbport + ")/" + dbname + "?charset=utf8"
-	if timezone != "" {
-		dsn = dsn + "&loc=" + url.QueryEscape(timezone)
+
+	dsn := ""
+	// 注册驱动
+	if dbType == "mysql" {
+		orm.RegisterDriver("postgres", orm.DRMySQL)
+		dsn = dbuser + ":" + dbpassword + "@tcp(" + dbhost + ":" + dbport + ")/" + dbname + "?charset=utf8"
+		if timezone != "" {
+			dsn = dsn + "&loc=" + url.QueryEscape(timezone)
+		}
+		orm.RegisterDataBase("default", dbType, dsn)
+	} else if dbType == "postgres" {
+		orm.RegisterDriver("postgres", orm.DRPostgres)
+		dsn = "user=" + dbuser + " password=" + dbpassword + " dbname=" + dbname + " host=" + dbhost + " port=" + dbport + " sslmode=disable"
+		orm.RegisterDataBase("default", dbType, dsn)
 	}
-	orm.RegisterDataBase("default", "mysql", dsn)
+
+	fmt.Println("init ...dbType=" + dbType + ", dsn=" + dsn)
+
 	orm.RegisterModel(
 		new(Admin),
 		new(Auth),

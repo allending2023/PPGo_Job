@@ -9,15 +9,18 @@ package controllers
 
 import (
 	"fmt"
-	"github.com/george518/PPGo_Job/libs"
 	"strconv"
 	"strings"
 	"time"
 
+	"PPGo_Job/libs"
+
+	"PPGo_Job/jobs"
+	"PPGo_Job/models"
+
+	cron "PPGo_Job/crons"
+
 	"github.com/astaxie/beego"
-	"github.com/george518/PPGo_Job/crons"
-	"github.com/george518/PPGo_Job/jobs"
-	"github.com/george518/PPGo_Job/models"
 )
 
 type TaskController struct {
@@ -359,7 +362,7 @@ func (self *TaskController) AjaxSave() {
 	self.ajaxMsg("", MSG_OK)
 }
 
-//检查是否含有禁用命令
+// 检查是否含有禁用命令
 func checkCommand(command string) (string, bool) {
 
 	filters := make([]interface{}, 0)

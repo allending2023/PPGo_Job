@@ -8,8 +8,9 @@
 package main
 
 import (
+	"PPGo_Job/agent/server"
+
 	"github.com/astaxie/beego/logs"
-	"github.com/george518/PPGo_Job/agent/server"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 
 func loadconfig() {
 
-	path := "/Users/haodaquan/golang/src/github.com/george518/PPGo_Job/actuator/config/conf.ini"
+	path := "/Users/haodaquan/golang/src/github.com/allending2023/PPGo_Job/actuator/config/conf.ini"
 	server.InitConfig(path)
 	logs.Info(server.C.TcpIp, server.ConfPath)
 	server.SaveConfig("TcpIp", "10.32.33.22")

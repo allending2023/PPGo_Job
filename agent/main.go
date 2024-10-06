@@ -2,17 +2,18 @@ package main
 
 import (
 	"flag"
-	"github.com/george518/PPGo_Job/agent/server"
 	"log"
 	"runtime"
+
+	"PPGo_Job/agent/server"
 )
 
-//文件配置路径
+// 文件配置路径
 var configFilePath string
 
 func initArgs() {
 	//server -c ./configpath
-	//defaultPath := "/Users/haodaquan/golang/src/github.com/george518/PPGo_Job/agent/config/conf.ini"
+	//defaultPath := "/Users/haodaquan/golang/src/github.com/allending2023/PPGo_Job/agent/config/conf.ini"
 	defaultPath := "./config/conf.ini"
 	flag.StringVar(&configFilePath, "c", defaultPath, "config file path request")
 	flag.Parse()

@@ -8,8 +8,9 @@
 package main
 
 import (
+	"PPGo_Job/libs"
+
 	"github.com/astaxie/beego/logs"
-	"github.com/george518/PPGo_Job/libs"
 )
 
 func main() {
